@@ -1,8 +1,16 @@
 import "./App.css";
 import React from "react";
 
-function App() {
-	return <h1>ola mundo</h1>;
-}
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./styles/global-styles";
 
-export default App;
+import * as theme from "./styles/theme";
+
+export const App = () => {
+	return (
+		<ThemeProvider theme={theme}>
+			<h1>ola mundo</h1>
+			<GlobalStyles />
+		</ThemeProvider>
+	);
+};
