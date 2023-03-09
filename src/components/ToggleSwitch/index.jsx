@@ -2,7 +2,7 @@ import React from "react";
 
 import * as Styled from "./styles";
 
-function ToggleSwitch() {
+export const ToggleSwitch = () => {
 	return (
 		<Styled.Container>
 			<Styled.NumberContainer>
@@ -13,6 +13,4 @@ function ToggleSwitch() {
 			<Styled.ToggleSwitch />
 		</Styled.Container>
 	);
-}
-
-export default ToggleSwitch;
+};

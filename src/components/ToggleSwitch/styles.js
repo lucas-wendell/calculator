@@ -1,39 +1,43 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
+	gap: 0.5rem;
+	width: 7rem;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	gap: 0.5rem;
-	width: 7rem;
 `;
 
 export const NumberContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	width: 100%;
+	${({ theme }) => css`
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		color: ${theme.textColors.primary};
+		font-size: 1.5rem;
+	`}
 `;
 
 export const ToggleSwitch = styled.div`
 	${({ theme }) => css`
-		position: relative;
 		width: 100%;
+		height: 2.2rem;
+		position: relative;
 		border-radius: 2rem;
 		background-color: ${theme.backgrounds.keypadBg};
-		height: 2.2rem;
 
 		&::before {
+			top: 50%;
 			content: "";
-			position: absolute;
+			z-index: 100;
+			left: 0.5rem;
 			width: 1.5rem;
 			height: 1.5rem;
-			background-color: ${theme.toggleColor};
 			border-radius: 50%;
-			left: 0.5rem;
-			top: 50%;
+			position: absolute;
 			transform: translateY(-50%);
-			z-index: 100;
+			background-color: ${theme.toggleColor};
 		}
 	`}
 `;
