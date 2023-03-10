@@ -66,12 +66,15 @@ export const purpleTheme = {
 			reset: {
 				colorBg: "hsl(281, 89%, 26%)",
 				shadowBg: "hsl(285, 91%, 52%)",
+				border: "0.3rem solid hsl(285, 91%, 52%)",
 			},
 			equal: {
 				colorBg: "hsl(176, 100%, 44%)",
 				shadowBg: "hsl(177, 92%, 70%)",
+				border: "0.3rem solid hsl(176, 100%, 44%)",
 			},
 		},
+		border: "0.3rem solid hsl(290, 70%, 36%)",
 		keyBg: "hsl(268, 47%, 21%)",
 		keyShadow: "hsl(290, 70%, 36%)",
 	},
