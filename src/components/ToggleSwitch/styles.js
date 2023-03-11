@@ -14,15 +14,16 @@ export const NumberContainer = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
-		color: ${theme.textColors.primary};
+		color: ${theme.textColors.navColor};
 		font-size: 1.5rem;
 	`}
 `;
 
 export const ToggleSwitch = styled.div`
-	${({ theme }) => css`
+	${({ theme, position }) => css`
 		width: 100%;
 		height: 2.2rem;
+		cursor: pointer;
 		position: relative;
 		border-radius: 2rem;
 		background-color: ${theme.backgrounds.keypadBg};
@@ -31,13 +32,18 @@ export const ToggleSwitch = styled.div`
 			top: 50%;
 			content: "";
 			z-index: 100;
-			left: 0.5rem;
+			margin-left: ${position == 1
+				? "0.5rem"
+				: position == 2
+				? "calc(50% - 1rem)"
+				: "calc(100% - 2rem)"};
 			width: 1.5rem;
 			height: 1.5rem;
 			border-radius: 50%;
 			position: absolute;
 			transform: translateY(-50%);
 			background-color: ${theme.toggleColor};
+			transition: 300ms ease-in-out;
 		}
 	`}
 `;

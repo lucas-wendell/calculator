@@ -7,7 +7,7 @@ export const Container = styled.div`
 		max-width: 50rem;
 		text-align: right;
 		border-radius: 0.5rem;
-		color: ${theme.textColors.primary};
-		background-color: ${theme.backgrounds.keypadBg};
+		color: ${theme.textColors.navColor};
+		background-color: ${theme.backgrounds.screenBg};
 	`}
 `;

@@ -10,19 +10,23 @@ export const mainTheme = {
 			reset: {
 				colorBg: "hsl(225, 21%, 49%)",
 				shadowBg: "hsl(224, 28%, 35%)",
+				border: "0.3rem solid hsl(224, 28%, 35%)",
 			},
 			equal: {
 				colorBg: "hsl(6, 63%, 50%)",
 				shadowBg: "hsl(6, 70%, 34%)",
+				border: "0.3rem solid hsl(6, 70%, 34%)",
 			},
 		},
 		keyBg: "hsl(30, 25%, 89%)",
 		keyShadow: "hsl(28, 16%, 65%)",
+		border: "0.3rem solid hsl(28, 16%, 65%)",
 	},
 	textColors: {
 		primary: "hsl(221, 14%, 31%)",
 		secondary: "hsl(0, 0%, 100%)",
 		tertiary: "hsl(0, 0%, 100%)",
+		navColor: "hsl(0, 0%, 100%)",
 	},
 };
 
@@ -38,19 +42,23 @@ export const lightTheme = {
 			reset: {
 				colorBg: "hsl(185, 42%, 37%)",
 				shadowBg: "hsl(185, 58%, 25%)",
+				border: "0.3rem solid hsl(185, 58%, 25%)",
 			},
 			equal: {
 				colorBg: "hsl(25, 98%, 40%)",
 				shadowBg: "hsl(25, 99%, 27%)",
+				border: "0.3rem solid hsl(25, 99%, 27%)",
 			},
 		},
 		keyBg: "hsl(45, 7%, 89%)",
 		keyShadow: "hsl(35, 11%, 61%)",
+		border: "0.3rem solid hsl(35, 11%, 61%)",
 	},
 	textColors: {
 		primary: "hsl(60, 10%, 19%)",
 		secondary: "hsl(0, 0%, 100%)",
 		tertiary: "hsl(0, 0%, 100%)",
+		navColor: "hsl(60, 10%, 19%)",
 	},
 };
 
@@ -82,5 +90,6 @@ export const purpleTheme = {
 		primary: "hsl(52, 100%, 62%)",
 		secondary: "hsl(198, 20%, 13%)",
 		tertiary: "hsl(0, 0%, 100%)",
+		navColor: "hsl(52, 100%, 62%)",
 	},
 };

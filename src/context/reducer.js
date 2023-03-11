@@ -7,5 +7,8 @@ export const reducer = (state, action) => {
 			console.log(state);
 			return state;
 		}
+		case actions.CHANGE_THEME: {
+			return { ...state, theme: action.payload };
+		}
 	}
 };

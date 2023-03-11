@@ -1,9 +1,10 @@
-import { createContext, useReducer } from "react";
+import P from "prop-types";
+import React from "react";
+
 import actions from "./actions";
 import { reducer } from "./reducer";
-import P from "prop-types";
 
-import React from "react";
+import { createContext, useReducer } from "react";
 
 const initialState = {
 	themes: ["mainTheme", "lightTheme", "purpleTheme"],
@@ -18,9 +19,12 @@ export const CalculatorState = createContext();
 export const Provider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const value = {
-		theme: state.theme,
+		theme: state.themes[state.theme - 1],
 		teste: () => {
 			dispatch({ type: actions.TESTE });
+		},
+		toggleTheme: (themeValue) => {
+			dispatch({ type: actions.CHANGE_THEME, payload: themeValue });
 		},
 	};
 
