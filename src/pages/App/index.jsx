@@ -7,6 +7,7 @@ import * as Styled from "./styles";
 import { GlobalStyles } from "../../styles/global-styles";
 
 import * as theme from "../../styles/theme";
+// import { CalculatorState } from "../../context";
 
 export const App = () => {
 	return (
