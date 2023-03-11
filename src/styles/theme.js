@@ -26,6 +26,7 @@ export const mainTheme = {
 		primary: "hsl(221, 14%, 31%)",
 		secondary: "hsl(0, 0%, 100%)",
 		tertiary: "hsl(0, 0%, 100%)",
+		navColor: "hsl(0, 0%, 100%)",
 	},
 };
 
@@ -57,6 +58,7 @@ export const lightTheme = {
 		primary: "hsl(60, 10%, 19%)",
 		secondary: "hsl(0, 0%, 100%)",
 		tertiary: "hsl(0, 0%, 100%)",
+		navColor: "hsl(60, 10%, 19%)",
 	},
 };
 
@@ -88,5 +90,6 @@ export const purpleTheme = {
 		primary: "hsl(52, 100%, 62%)",
 		secondary: "hsl(198, 20%, 13%)",
 		tertiary: "hsl(0, 0%, 100%)",
+		navColor: "hsl(52, 100%, 62%)",
 	},
 };
