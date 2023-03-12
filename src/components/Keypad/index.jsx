@@ -7,7 +7,7 @@ export const Keypad = () => {
 			<Styled.Key>7</Styled.Key>
 			<Styled.Key>8</Styled.Key>
 			<Styled.Key>9</Styled.Key>
-			<Styled.Key>DEL</Styled.Key>
+			<Styled.SpecialKey styleName="delAndReset">DEL</Styled.SpecialKey>
 			<Styled.Key>4</Styled.Key>
 			<Styled.Key>5</Styled.Key>
 			<Styled.Key>6</Styled.Key>
@@ -20,10 +20,10 @@ export const Keypad = () => {
 			<Styled.Key>0</Styled.Key>
 			<Styled.Key>/</Styled.Key>
 			<Styled.Key>x</Styled.Key>
-			<Styled.SpecialKey typeKey="reset" specialKey>
+			<Styled.SpecialKey styleName="delAndReset" typeKey="reset">
 				RESET
 			</Styled.SpecialKey>
-			<Styled.SpecialKey typeKey="equal" specialKey>
+			<Styled.SpecialKey styleName="equal" typeKey="equal">
 				=
 			</Styled.SpecialKey>
 		</Styled.Container>

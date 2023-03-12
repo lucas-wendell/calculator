@@ -7,7 +7,7 @@ export const mainTheme = {
 	},
 	keys: {
 		specialKey: {
-			reset: {
+			delAndReset: {
 				colorBg: "hsl(225, 21%, 49%)",
 				shadowBg: "hsl(224, 28%, 35%)",
 				border: "0.3rem solid hsl(224, 28%, 35%)",
@@ -44,7 +44,7 @@ export const lightTheme = {
 	},
 	keys: {
 		specialKey: {
-			reset: {
+			delAndReset: {
 				colorBg: "hsl(185, 42%, 37%)",
 				shadowBg: "hsl(185, 58%, 25%)",
 				border: "0.3rem solid hsl(185, 58%, 25%)",
@@ -81,7 +81,7 @@ export const purpleTheme = {
 	},
 	keys: {
 		specialKey: {
-			reset: {
+			delAndReset: {
 				colorBg: "hsl(281, 89%, 26%)",
 				shadowBg: "hsl(285, 91%, 52%)",
 				border: "0.3rem solid hsl(285, 91%, 52%)",

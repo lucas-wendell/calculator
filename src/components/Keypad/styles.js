@@ -13,11 +13,11 @@ const CommonStyles = css`
 `;
 
 export const SpecialKey = styled.div`
-	${({ theme, typeKey }) => css`
+	${({ theme, typeKey, styleName }) => css`
 		${CommonStyles}
-		color: ${theme.keys.specialKey[typeKey].color};
-		border-bottom: ${theme.keys.specialKey[typeKey].border};
-		background-color: ${theme.keys.specialKey[typeKey].colorBg};
+		color: ${theme.keys.specialKey[styleName].color};
+		border-bottom: ${theme.keys.specialKey[styleName].border};
+		background-color: ${theme.keys.specialKey[styleName].colorBg};
 
 		grid-column: ${typeKey === "reset"
 			? "1 / 3"
@@ -25,7 +25,7 @@ export const SpecialKey = styled.div`
 			? "3 / 5"
 			: "auto"};
 		&:hover {
-			background-color: ${theme.keys.specialKey[typeKey].hoverColor};
+			background-color: ${theme.keys.specialKey[styleName].hoverColor};
 		}
 	`}
 `;
