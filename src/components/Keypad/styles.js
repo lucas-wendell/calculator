@@ -49,10 +49,10 @@ export const Key = styled.div`
 			cursor: pointer;
 			background-color: ${({ typeKey }) =>
 				typeKey === "reset"
-					? theme.keys.keyShadow
+					? theme.keys.specialKey.reset.hoverColor
 					: typeKey === "equal"
-					? theme.keys.specialKey.equal.shadowBg
-					: theme.keys.specialKey.reset.colorBg};
+					? theme.keys.specialKey.equal.hoverColor
+					: theme.keys.hoverColor};
 		}
 	`}
 `;
