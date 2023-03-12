@@ -1,5 +1,4 @@
 import React from "react";
-
 import * as Styled from "./styles";
 
 export const Keypad = () => {
@@ -21,12 +20,12 @@ export const Keypad = () => {
 			<Styled.Key>0</Styled.Key>
 			<Styled.Key>/</Styled.Key>
 			<Styled.Key>x</Styled.Key>
-			<Styled.Key typeKey="reset" specialKey>
+			<Styled.SpecialKey typeKey="reset" specialKey>
 				RESET
-			</Styled.Key>
-			<Styled.Key typeKey="equal" specialKey>
+			</Styled.SpecialKey>
+			<Styled.SpecialKey typeKey="equal" specialKey>
 				=
-			</Styled.Key>
+			</Styled.SpecialKey>
 		</Styled.Container>
 	);
 };
