@@ -93,7 +93,6 @@ export const Keypad = () => {
 	}, [lastKeyPress]);
 
 	const handleDel = () => {
-		// console.log("del");
 		if (lastKeyPress === "operation") {
 			setOperation("");
 			setCurrentNumber(firstNumber);
