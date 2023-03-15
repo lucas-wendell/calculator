@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Styled from "./styles";
 
 export const Keypad = () => {
@@ -6,6 +6,7 @@ export const Keypad = () => {
 	const [firstNumber, setFirstNumber] = useState("0");
 	const [operation, setOperation] = useState("");
 	const [numberOfDot, setNumberOfDot] = useState(0);
+	const [lastKeyPress, setLastKeyPress] = useState("");
 
 	const handleAddNumber = (e) => {
 		const value = e.target.getAttribute("value");
@@ -20,6 +21,8 @@ export const Keypad = () => {
 			(prevNumber) =>
 				`${prevNumber === "0" ? (isDot ? prevNumber : "") : prevNumber}${value}`
 		);
+
+		setLastKeyPress(value);
 	};
 
 	const handleSum = () => {
@@ -33,6 +36,7 @@ export const Keypad = () => {
 			setFirstNumber("0");
 			setOperation("");
 		}
+		setLastKeyPress("operation");
 	};
 
 	const handleMul = () => {
@@ -46,6 +50,7 @@ export const Keypad = () => {
 			setFirstNumber("0");
 			setOperation("");
 		}
+		setLastKeyPress("operation");
 	};
 
 	const handleDiv = () => {
@@ -59,6 +64,7 @@ export const Keypad = () => {
 			setFirstNumber("0");
 			setOperation("");
 		}
+		setLastKeyPress("operation");
 	};
 
 	const handleReset = () => {
@@ -79,10 +85,27 @@ export const Keypad = () => {
 			setFirstNumber("0");
 			setOperation("");
 		}
+		setLastKeyPress("operation");
 	};
 
+	useEffect(() => {
+		console.log(lastKeyPress);
+	}, [lastKeyPress]);
+
 	const handleDel = () => {
-		console.log("del");
+		// console.log("del");
+		if (lastKeyPress === "operation") {
+			setOperation("");
+			setCurrentNumber(firstNumber);
+			setFirstNumber("0");
+		} else {
+			setCurrentNumber((prevNumber) =>
+				prevNumber.slice(0, prevNumber.length - 1)
+			);
+			setNumberOfDot(0);
+		}
+
+		setLastKeyPress("");
 	};
 
 	const operations = {
