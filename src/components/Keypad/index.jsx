@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { CalculatorState } from "../../context";
 import * as Styled from "./styles";
 
 export const Keypad = () => {
@@ -7,6 +8,7 @@ export const Keypad = () => {
 	const [operation, setOperation] = useState("");
 	const [numberOfDot, setNumberOfDot] = useState(0);
 	const [lastKeyPress, setLastKeyPress] = useState("");
+	const { setGlobalCurrentNumber } = useContext(CalculatorState);
 
 	const handleAddNumber = (e) => {
 		const value = e.target.getAttribute("value");
@@ -72,6 +74,7 @@ export const Keypad = () => {
 		setFirstNumber("0");
 		setCurrentNumber("0");
 		setOperation("");
+		setLastKeyPress("");
 	};
 
 	const handleSub = () => {
@@ -89,8 +92,8 @@ export const Keypad = () => {
 	};
 
 	useEffect(() => {
-		console.log(lastKeyPress);
-	}, [lastKeyPress]);
+		setGlobalCurrentNumber(currentNumber);
+	}, [currentNumber]);
 
 	const handleDel = () => {
 		if (lastKeyPress === "operation") {
@@ -98,9 +101,10 @@ export const Keypad = () => {
 			setCurrentNumber(firstNumber);
 			setFirstNumber("0");
 		} else {
-			setCurrentNumber((prevNumber) =>
-				prevNumber.slice(0, prevNumber.length - 1)
-			);
+			setCurrentNumber((prevNumber) => {
+				if (prevNumber.length === 1) return (prevNumber = "0");
+				return prevNumber.slice(0, prevNumber.length - 1);
+			});
 			setNumberOfDot(0);
 		}
 

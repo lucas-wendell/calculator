@@ -1,11 +1,8 @@
-import React from "react";
-import P from "prop-types";
+import React, { useContext } from "react";
+import { CalculatorState } from "../../context";
 import * as Styled from "./styles";
 
-export const Viewer = ({ children }) => {
-	return <Styled.Container>{children}</Styled.Container>;
-};
-
-Viewer.propTypes = {
-	children: P.node.isRequired,
+export const Viewer = () => {
+	const { currentNumber } = useContext(CalculatorState);
+	return <Styled.Container>{currentNumber}</Styled.Container>;
 };
