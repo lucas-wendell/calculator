@@ -119,7 +119,7 @@ export const Keypad = () => {
 	};
 
 	const handleEqual = () => {
-		if (firstNumber !== "0" && operation !== "" && currentNumber !== "0") {
+		if (operation !== "") {
 			operations[operation]();
 		}
 	};
