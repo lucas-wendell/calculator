@@ -20,8 +20,9 @@ export const Provider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const value = {
 		theme: state.themes[state.theme - 1],
-		teste: () => {
-			dispatch({ type: actions.TESTE });
+		currentNumber: state.currentNumber,
+		setGlobalCurrentNumber: (currentNumber) => {
+			dispatch({ type: actions.SET_CURRENT_NUMBER, payload: currentNumber });
 		},
 		toggleTheme: (themeValue) => {
 			dispatch({ type: actions.CHANGE_THEME, payload: themeValue });
