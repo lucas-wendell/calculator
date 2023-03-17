@@ -7,7 +7,7 @@ export const Container = styled.div`
 		max-width: 50rem;
 		text-align: right;
 		border-radius: 0.5rem;
-		color: ${theme.textColors.navColor};
+		color: ${theme.navColor};
 		background-color: ${theme.backgrounds.screenBg};
 	`}
 `;

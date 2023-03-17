@@ -10,7 +10,7 @@ export const Container = styled.nav`
 export const Logo = styled.h4`
 	${({ theme }) => css`
 		font-size: 3.2rem;
-		color: ${theme.textColors.navColor};
+		color: ${theme.navColor};
 	`};
 `;
 
@@ -21,6 +21,6 @@ export const ToggleSwitchContainer = styled.div`
 		font-size: 1.2rem;
 		align-items: flex-end;
 		text-transform: uppercase;
-		color: ${theme.textColors.navColor};
+		color: ${theme.navColor};
 	`};
 `;
