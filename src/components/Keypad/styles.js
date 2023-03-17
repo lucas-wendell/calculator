@@ -45,7 +45,7 @@ export const Container = styled.div`
 export const Key = styled.div`
 	${({ theme }) => css`
 		${CommonStyles}
-		color: ${theme.textColors.primary};
+		color: ${theme.keys.color};
 		border-bottom: ${theme.keys.border};
 		background-color: ${theme.keys.keyBg};
 

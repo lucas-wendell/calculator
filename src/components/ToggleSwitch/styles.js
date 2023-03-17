@@ -14,7 +14,7 @@ export const NumberContainer = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
-		color: ${theme.textColors.navColor};
+		color: ${theme.navColor};
 		font-size: 1.5rem;
 	`}
 `;
