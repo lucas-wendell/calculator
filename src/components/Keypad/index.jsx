@@ -35,155 +35,76 @@ export const Keypad = () => {
 		}
 	};
 
+	const handleClick = (e) => {
+		const action = e.target.getAttribute("action");
+		if (!action) return;
+
+		if (action === actions.NUMBER_KEY_PRESSED) {
+			const value = e.target.getAttribute("value");
+			return dispatch({ type: action, payload: value });
+		} else if (action === "equal") {
+			return handleEqual();
+		} else {
+			dispatch({ type: action });
+		}
+	};
+
 	return (
-		<Styled.Container>
-			<Styled.Key
-				value="7"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+		<Styled.Container onClick={handleClick}>
+			<Styled.Key value="7" action={actions.NUMBER_KEY_PRESSED}>
 				7
 			</Styled.Key>
-			<Styled.Key
-				value="8"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="8" action={actions.NUMBER_KEY_PRESSED}>
 				8
 			</Styled.Key>
-			<Styled.Key
-				value="9"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="9" action={actions.NUMBER_KEY_PRESSED}>
 				9
 			</Styled.Key>
 			<Styled.SpecialKey
 				styleName="delAndReset"
-				onClick={() => {
-					dispatch({ type: actions.DELETE_KEY_PRESSED });
-				}}
+				action={actions.DELETE_KEY_PRESSED}
 			>
 				DEL
 			</Styled.SpecialKey>
-			<Styled.Key
-				value="4"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="4" action={actions.NUMBER_KEY_PRESSED}>
 				4
 			</Styled.Key>
-			<Styled.Key
-				value="5"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="5" action={actions.NUMBER_KEY_PRESSED}>
 				5
 			</Styled.Key>
-			<Styled.Key
-				value="6"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="6" action={actions.NUMBER_KEY_PRESSED}>
 				6
 			</Styled.Key>
-			<Styled.Key
-				value="+"
-				onClick={() => {
-					dispatch({ type: actions.ADD_KEY_PRESSED });
-				}}
-			>
+			<Styled.Key value="+" action={actions.ADD_KEY_PRESSED}>
 				+
 			</Styled.Key>
-			<Styled.Key
-				value="1"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="1" action={actions.NUMBER_KEY_PRESSED}>
 				1
 			</Styled.Key>
-			<Styled.Key
-				value="2"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="2" action={actions.NUMBER_KEY_PRESSED}>
 				2
 			</Styled.Key>
-			<Styled.Key
-				value="3"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="3" action={actions.NUMBER_KEY_PRESSED}>
 				3
 			</Styled.Key>
-			<Styled.Key
-				onClick={() => {
-					dispatch({ type: actions.MINUS_KEY_PRESSED });
-				}}
-			>
-				-
-			</Styled.Key>
-			<Styled.Key
-				value="."
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key action={actions.MINUS_KEY_PRESSED}>-</Styled.Key>
+			<Styled.Key value="." action={actions.NUMBER_KEY_PRESSED}>
 				.
 			</Styled.Key>
-			<Styled.Key
-				value="0"
-				onClick={(e) => {
-					const value = e.target.getAttribute("value");
-					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
-				}}
-			>
+			<Styled.Key value="0" action={actions.NUMBER_KEY_PRESSED}>
 				0
 			</Styled.Key>
-			<Styled.Key
-				onClick={() => {
-					dispatch({ type: actions.DIVISION_KEY_PRESSED });
-				}}
-			>
-				/
-			</Styled.Key>
-			<Styled.Key
-				onClick={() => {
-					dispatch({ type: actions.MULTIPLICATION_KEY_PRESSED });
-				}}
-			>
-				x
-			</Styled.Key>
+			<Styled.Key action={actions.DIVISION_KEY_PRESSED}>/</Styled.Key>
+			<Styled.Key action={actions.MULTIPLICATION_KEY_PRESSED}>x</Styled.Key>
 			<Styled.SpecialKey
-				onClick={() => {
-					dispatch({ type: actions.RESET_KEY_PRESSED });
-				}}
 				styleName="delAndReset"
 				typeKey="reset"
+				action={actions.RESET_KEY_PRESSED}
 			>
 				RESET
 			</Styled.SpecialKey>
 			<Styled.SpecialKey
-				onClick={handleEqual}
+				action="equal"
 				value="="
 				styleName="equal"
 				typeKey="equal"
