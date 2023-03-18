@@ -1,175 +1,182 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import { CalculatorState } from "../../context";
 import * as Styled from "./styles";
+import actions from "./actions";
+import { reducer } from "./reducer";
+
+const initialState = {
+	currentNumber: "0",
+	firstNumber: "0",
+	operation: "",
+	numberOfDot: 0,
+	lastKeyPress: "",
+};
+
+const operationsActions = {
+	"+": actions.ADD_KEY_PRESSED,
+	"-": actions.MINUS_KEY_PRESSED,
+	"/": actions.DIVISION_KEY_PRESSED,
+	x: actions.MULTIPLICATION_KEY_PRESSED,
+};
 
 export const Keypad = () => {
-	const [currentNumber, setCurrentNumber] = useState("0");
-	const [firstNumber, setFirstNumber] = useState("0");
-	const [operation, setOperation] = useState("");
-	const [numberOfDot, setNumberOfDot] = useState(0);
-	const [lastKeyPress, setLastKeyPress] = useState("");
+	const [state, dispatch] = useReducer(reducer, initialState);
+	const { currentNumber } = state;
 	const { setGlobalCurrentNumber } = useContext(CalculatorState);
-
-	const handleAddNumber = (e) => {
-		const value = e.target.getAttribute("value");
-		const isDot = value === ".";
-
-		if (isDot) {
-			if (numberOfDot !== 0) return;
-			setNumberOfDot((prevValue) => ++prevValue);
-		}
-
-		setCurrentNumber(
-			(prevNumber) =>
-				`${prevNumber === "0" ? (isDot ? prevNumber : "") : prevNumber}${value}`
-		);
-
-		setLastKeyPress(value);
-	};
-
-	const handleSum = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(currentNumber);
-			setCurrentNumber("0");
-			setOperation("+");
-		} else {
-			const sum = +firstNumber + +currentNumber;
-			setCurrentNumber(String(sum));
-			setFirstNumber("0");
-			setOperation("");
-		}
-		setLastKeyPress("operation");
-	};
-
-	const handleMul = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(currentNumber);
-			setCurrentNumber("0");
-			setOperation("x");
-		} else {
-			const mul = +firstNumber * +currentNumber;
-			setCurrentNumber(String(mul));
-			setFirstNumber("0");
-			setOperation("");
-		}
-		setLastKeyPress("operation");
-	};
-
-	const handleDiv = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(currentNumber);
-			setCurrentNumber("0");
-			setOperation("/");
-		} else {
-			const div = +firstNumber / +currentNumber;
-			setCurrentNumber(String(div));
-			setFirstNumber("0");
-			setOperation("");
-		}
-		setLastKeyPress("operation");
-	};
-
-	const handleReset = () => {
-		setNumberOfDot(0);
-		setFirstNumber("0");
-		setCurrentNumber("0");
-		setOperation("");
-		setLastKeyPress("");
-	};
-
-	const handleSub = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(currentNumber);
-			setCurrentNumber("0");
-			setOperation("-");
-		} else {
-			const sub = +firstNumber - +currentNumber;
-			setCurrentNumber(String(sub));
-			setFirstNumber("0");
-			setOperation("");
-		}
-		setLastKeyPress("operation");
-	};
 
 	useEffect(() => {
 		setGlobalCurrentNumber(currentNumber);
 	}, [currentNumber]);
 
-	const handleDel = () => {
-		if (lastKeyPress === "operation") {
-			setOperation("");
-			setCurrentNumber(firstNumber);
-			setFirstNumber("0");
-		} else {
-			setCurrentNumber((prevNumber) => {
-				if (prevNumber.length === 1) return (prevNumber = "0");
-				return prevNumber.slice(0, prevNumber.length - 1);
-			});
-			setNumberOfDot(0);
-		}
-
-		setLastKeyPress("");
-	};
-
-	const operations = {
-		"+": handleSum,
-		"-": handleSub,
-		"/": handleDiv,
-		x: handleMul,
-	};
-
 	const handleEqual = () => {
-		if (operation !== "") {
-			operations[operation]();
+		if (state.operation !== "") {
+			const TYPE = operationsActions[state.operation];
+			dispatch({ type: TYPE });
 		}
 	};
 
 	return (
 		<Styled.Container>
-			<Styled.Key value="7" onClick={handleAddNumber}>
+			<Styled.Key
+				value="7"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				7
 			</Styled.Key>
-			<Styled.Key value="8" onClick={handleAddNumber}>
+			<Styled.Key
+				value="8"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				8
 			</Styled.Key>
-			<Styled.Key value="9" onClick={handleAddNumber}>
+			<Styled.Key
+				value="9"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				9
 			</Styled.Key>
-			<Styled.SpecialKey styleName="delAndReset" onClick={handleDel}>
+			<Styled.SpecialKey
+				styleName="delAndReset"
+				onClick={() => {
+					dispatch({ type: actions.DELETE_KEY_PRESSED });
+				}}
+			>
 				DEL
 			</Styled.SpecialKey>
-			<Styled.Key value="4" onClick={handleAddNumber}>
+			<Styled.Key
+				value="4"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				4
 			</Styled.Key>
-			<Styled.Key value="5" onClick={handleAddNumber}>
+			<Styled.Key
+				value="5"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				5
 			</Styled.Key>
-			<Styled.Key value="6" onClick={handleAddNumber}>
+			<Styled.Key
+				value="6"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				6
 			</Styled.Key>
-			<Styled.Key value="+" onClick={handleSum}>
+			<Styled.Key
+				value="+"
+				onClick={() => {
+					dispatch({ type: actions.ADD_KEY_PRESSED });
+				}}
+			>
 				+
 			</Styled.Key>
-			<Styled.Key value="1" onClick={handleAddNumber}>
+			<Styled.Key
+				value="1"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				1
 			</Styled.Key>
-			<Styled.Key value="2" onClick={handleAddNumber}>
+			<Styled.Key
+				value="2"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				2
 			</Styled.Key>
-			<Styled.Key value="3" onClick={handleAddNumber}>
+			<Styled.Key
+				value="3"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				3
 			</Styled.Key>
-			<Styled.Key onClick={handleSub}>-</Styled.Key>
-			<Styled.Key value="." onClick={handleAddNumber}>
+			<Styled.Key
+				onClick={() => {
+					dispatch({ type: actions.MINUS_KEY_PRESSED });
+				}}
+			>
+				-
+			</Styled.Key>
+			<Styled.Key
+				value="."
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				.
 			</Styled.Key>
-			<Styled.Key value="0" onClick={handleAddNumber}>
+			<Styled.Key
+				value="0"
+				onClick={(e) => {
+					const value = e.target.getAttribute("value");
+					dispatch({ type: actions.NUMBER_KEY_PRESSED, payload: value });
+				}}
+			>
 				0
 			</Styled.Key>
-			<Styled.Key onClick={handleDiv}>/</Styled.Key>
-			<Styled.Key onClick={handleMul}>x</Styled.Key>
+			<Styled.Key
+				onClick={() => {
+					dispatch({ type: actions.DIVISION_KEY_PRESSED });
+				}}
+			>
+				/
+			</Styled.Key>
+			<Styled.Key
+				onClick={() => {
+					dispatch({ type: actions.MULTIPLICATION_KEY_PRESSED });
+				}}
+			>
+				x
+			</Styled.Key>
 			<Styled.SpecialKey
-				onClick={handleReset}
+				onClick={() => {
+					dispatch({ type: actions.RESET_KEY_PRESSED });
+				}}
 				styleName="delAndReset"
 				typeKey="reset"
 			>
