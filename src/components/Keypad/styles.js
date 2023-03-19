@@ -10,6 +10,18 @@ const CommonStyles = css`
 	align-items: center;
 	border-radius: 0.4rem;
 	justify-content: center;
+
+	@media (max-width: 530px) {
+		min-width: 7rem;
+		min-height: 4rem;
+		font-size: 2rem;
+	}
+
+	@media (max-width: 400px) {
+		min-width: 5rem;
+		min-height: 4rem;
+		font-size: 1.5rem;
+	}
 `;
 
 export const SpecialKey = styled.div`
@@ -40,6 +52,16 @@ export const Container = styled.div`
 		grid-template-columns: repeat(4, 1fr);
 		background-color: ${theme.backgrounds.keypadBg};
 	`}
+
+	@media (max-width: 400px) {
+		gap: 1.5rem;
+		padding: 1.5rem;
+	}
+
+	@media (max-width: 320px) {
+		gap: 1rem;
+		padding: 1rem;
+	}
 `;
 
 export const Key = styled.div`

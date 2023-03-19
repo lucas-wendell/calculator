@@ -10,4 +10,19 @@ export const Container = styled.div`
 		color: ${theme.navColor};
 		background-color: ${theme.backgrounds.screenBg};
 	`}
+
+	@media (max-width: 530px) {
+		max-width: 45rem;
+		font-size: 2rem;
+	}
+
+	@media (max-width: 400px) {
+		max-width: 30rem;
+		font-size: 1.5rem;
+		padding: 2rem 1rem;
+	}
+
+	@media (max-width: 320px) {
+		max-width: 25rem;
+	}
 `;
