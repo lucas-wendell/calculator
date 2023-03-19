@@ -10,7 +10,7 @@ export const Calculator = () => {
 	return (
 		<Styled.Container>
 			<Nav />
-			<Viewer>399,981</Viewer>
+			<Viewer />
 			<Keypad />
 		</Styled.Container>
 	);

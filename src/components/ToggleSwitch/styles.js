@@ -6,6 +6,14 @@ export const Container = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+
+	@media (max-width: 530px) {
+		width: 6rem;
+	}
+
+	@media (max-width: 400px) {
+		width: 5rem;
+	}
 `;
 
 export const NumberContainer = styled.div`
@@ -17,6 +25,10 @@ export const NumberContainer = styled.div`
 		color: ${theme.navColor};
 		font-size: 1.5rem;
 	`}
+
+	@media (max-width: 400px) {
+		font-size: 1rem;
+	}
 `;
 
 export const ToggleSwitch = styled.div`
@@ -44,6 +56,19 @@ export const ToggleSwitch = styled.div`
 			transform: translateY(-50%);
 			background-color: ${theme.toggleColor};
 			transition: 300ms ease-in-out;
+		}
+
+		@media (max-width: 400px) {
+			&::before {
+				width: 1.2rem;
+				height: 1.2rem;
+
+				margin-left: ${position == 1
+					? "0.5rem"
+					: position == 2
+					? "calc(50% - .8rem)"
+					: "calc(100% - 2rem)"};
+			}
 		}
 	`}
 `;
