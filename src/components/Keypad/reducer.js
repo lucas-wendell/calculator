@@ -4,11 +4,9 @@ export const reducer = (state, action) => {
 	switch (action.type) {
 		case actions.NUMBER_KEY_PRESSED: {
 			const isDot = action.payload === ".";
-			let { numberOfDot, currentNumber } = state;
-			if (isDot) {
-				if (numberOfDot !== 0) return { ...state };
-				state = { ...state, numberOfDot: ++numberOfDot };
-			}
+			let { currentNumber } = state;
+
+			if (isDot && currentNumber.includes(".")) return { ...state };
 
 			return {
 				...state,
@@ -120,7 +118,6 @@ export const reducer = (state, action) => {
 					currentNumber.length === 1
 						? "0"
 						: currentNumber.slice(0, currentNumber.length - 1),
-				numberOfDot: 0,
 				lastKeyPress: "",
 			};
 		}
@@ -129,7 +126,6 @@ export const reducer = (state, action) => {
 				currentNumber: "0",
 				firstNumber: "0",
 				operation: "",
-				numberOfDot: 0,
 				lastKeyPress: "",
 			};
 		}

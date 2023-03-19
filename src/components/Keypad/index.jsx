@@ -8,7 +8,6 @@ const initialState = {
 	currentNumber: "0",
 	firstNumber: "0",
 	operation: "",
-	numberOfDot: 0,
 	lastKeyPress: "",
 };
 
