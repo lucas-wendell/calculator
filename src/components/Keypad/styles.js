@@ -11,6 +11,8 @@ const CommonStyles = css`
 	border-radius: 0.4rem;
 	justify-content: center;
 
+	border: none;
+
 	@media (max-width: 530px) {
 		min-width: 7rem;
 		min-height: 4rem;
@@ -24,7 +26,7 @@ const CommonStyles = css`
 	}
 `;
 
-export const SpecialKey = styled.div`
+export const SpecialKey = styled.button`
 	${({ theme, typeKey, styleName }) => css`
 		${CommonStyles}
 		color: ${theme.keys.specialKey[styleName].color};
@@ -64,7 +66,7 @@ export const Container = styled.div`
 	}
 `;
 
-export const Key = styled.div`
+export const Key = styled.button`
 	${({ theme }) => css`
 		${CommonStyles}
 		color: ${theme.keys.color};
